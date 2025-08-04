@@ -209,7 +209,7 @@ class FSDPCheckpointManager(BaseCheckpointManager):
             and len(self.previous_saved_paths) >= max_ckpt_to_keep
         ):
             keep_start = len(self.previous_saved_paths) - max_ckpt_to_keep + 1
-            self.remove_previous_save_local_path(self.previous_saved_paths[:keep_start])
+            self.remove_previous_save_local_path(self.previous_saved_paths[:keep_start], self.world_size, self.rank)
             self.previous_saved_paths = self.previous_saved_paths[keep_start:]
 
         local_path = local_mkdir_safe(local_path)
