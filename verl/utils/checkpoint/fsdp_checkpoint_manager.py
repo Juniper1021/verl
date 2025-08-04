@@ -201,7 +201,7 @@ class FSDPCheckpointManager(BaseCheckpointManager):
         # record the previous global step
         self.previous_global_step = global_step
 
-        # remove previous local_path, only rank 0 should do this
+        # remove previous local_path
         if (
             max_ckpt_to_keep
             and isinstance(max_ckpt_to_keep, int)
